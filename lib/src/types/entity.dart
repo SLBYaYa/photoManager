@@ -84,8 +84,6 @@ class AssetPathEntity {
   ///  * iOS: 1 - Album, 2 - Folder.
   final int albumType;
 
-  // final String? newFilePath;
-
   /// The latest modification date of the album.
   ///
   /// This field will only be included when
@@ -333,7 +331,7 @@ class AssetPathEntity {
 /// {@endtemplate}
 @immutable
 class AssetEntity {
-  const AssetEntity({
+  AssetEntity({
     required this.id,
     required this.typeInt,
     required this.width,
@@ -382,7 +380,9 @@ class AssetEntity {
   ///  * iOS/macOS: `localIdentifier`.
   final String id;
 
-  String? _newFilePath;
+  ///
+  String? newFilePath;
+
   /// The title field of the asset.
   ///  * Android: `MediaStore.MediaColumns.DISPLAY_NAME`.
   ///  * iOS/macOS: `PHAssetResource.filename`.
@@ -419,7 +419,7 @@ class AssetEntity {
 
 
   void updatePath(String? path) {
-    _newFilePath = path;
+    newFilePath = path;
   }
 
   /// The duration of the asset, but in different units.
@@ -719,8 +719,8 @@ class AssetEntity {
       return null;
     }
 
-    if (_newFilePath != null) {
-      return File(_newFilePath!);
+    if (newFilePath != null) {
+      return File(newFilePath!);
     }
 
     final String? path = await plugin.getFullFile(
