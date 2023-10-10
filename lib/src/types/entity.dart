@@ -84,7 +84,7 @@ class AssetPathEntity {
   ///  * iOS: 1 - Album, 2 - Folder.
   final int albumType;
 
-  String? newFilePath;
+  final String? newFilePath;
 
   /// The latest modification date of the album.
   ///
@@ -383,7 +383,7 @@ class AssetEntity {
   ///  * iOS/macOS: `localIdentifier`.
   final String id;
 
-  String? newFilePath;
+  final String? newFilePath;
   /// The title field of the asset.
   ///  * Android: `MediaStore.MediaColumns.DISPLAY_NAME`.
   ///  * iOS/macOS: `PHAssetResource.filename`.
