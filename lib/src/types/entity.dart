@@ -84,7 +84,7 @@ class AssetPathEntity {
   ///  * iOS: 1 - Album, 2 - Folder.
   final int albumType;
 
-  final String? newFilePath;
+  // final String? newFilePath;
 
   /// The latest modification date of the album.
   ///
