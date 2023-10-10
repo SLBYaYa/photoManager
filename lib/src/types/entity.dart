@@ -117,9 +117,6 @@ class AssetPathEntity {
   /// If the [albumType] is 2, the value will be null.
   final PMDarwinAssetCollectionSubtype? darwinSubtype;
 
-  void updatePath(String? path) {
-    newFilePath = path;
-  }
 
   /// Call this method to obtain new path entity.
   static Future<AssetPathEntity> obtainPathFromProperties({
@@ -386,7 +383,7 @@ class AssetEntity {
   ///  * iOS/macOS: `localIdentifier`.
   final String id;
 
-  final String? newFilePath;
+  String? newFilePath;
   /// The title field of the asset.
   ///  * Android: `MediaStore.MediaColumns.DISPLAY_NAME`.
   ///  * iOS/macOS: `PHAssetResource.filename`.
@@ -420,6 +417,11 @@ class AssetEntity {
 
   /// The type value of the [type].
   final int typeInt;
+
+
+  void updatePath(String? path) {
+    newFilePath = path;
+  }
 
   /// The duration of the asset, but in different units.
   ///  * [AssetType.audio] is in **milliseconds**.
