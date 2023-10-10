@@ -347,7 +347,7 @@ class AssetEntity {
     this.relativePath,
     double? latitude,
     double? longitude,
-    this.newFilePath,
+    // this.newFilePath,
     this.mimeType,
     this.subtype = 0,
   })  : _latitude = latitude,
@@ -383,7 +383,7 @@ class AssetEntity {
   ///  * iOS/macOS: `localIdentifier`.
   final String id;
 
-  final String? newFilePath;
+  String? _newFilePath;
   /// The title field of the asset.
   ///  * Android: `MediaStore.MediaColumns.DISPLAY_NAME`.
   ///  * iOS/macOS: `PHAssetResource.filename`.
@@ -420,7 +420,7 @@ class AssetEntity {
 
 
   void updatePath(String? path) {
-    newFilePath = path;
+    _newFilePath = path;
   }
 
   /// The duration of the asset, but in different units.
@@ -720,8 +720,8 @@ class AssetEntity {
       return null;
     }
 
-    if (newFilePath != null) {
-      return File(newFilePath!);
+    if (_newFilePath != null) {
+      return File(_newFilePath!);
     }
 
     final String? path = await plugin.getFullFile(
