@@ -117,6 +117,10 @@ class AssetPathEntity {
   /// If the [albumType] is 2, the value will be null.
   final PMDarwinAssetCollectionSubtype? darwinSubtype;
 
+  void updatePath(String? path) {
+    newFilePath = path;
+  }
+
   /// Call this method to obtain new path entity.
   static Future<AssetPathEntity> obtainPathFromProperties({
     required String id,
