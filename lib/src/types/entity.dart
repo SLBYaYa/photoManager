@@ -84,6 +84,8 @@ class AssetPathEntity {
   ///  * iOS: 1 - Album, 2 - Folder.
   final int albumType;
 
+  String? newFilePath;
+
   /// The latest modification date of the album.
   ///
   /// This field will only be included when
@@ -344,6 +346,7 @@ class AssetEntity {
     this.relativePath,
     double? latitude,
     double? longitude,
+    this.newFilePath,
     this.mimeType,
     this.subtype = 0,
   })  : _latitude = latitude,
@@ -379,6 +382,7 @@ class AssetEntity {
   ///  * iOS/macOS: `localIdentifier`.
   final String id;
 
+  final String? newFilePath;
   /// The title field of the asset.
   ///  * Android: `MediaStore.MediaColumns.DISPLAY_NAME`.
   ///  * iOS/macOS: `PHAssetResource.filename`.
@@ -709,6 +713,11 @@ class AssetEntity {
     if (!_platformMatched) {
       return null;
     }
+
+    if (newFilePath != null) {
+      return File(newFilePath!);
+    }
+
     final String? path = await plugin.getFullFile(
       id,
       isOrigin: isOrigin,
