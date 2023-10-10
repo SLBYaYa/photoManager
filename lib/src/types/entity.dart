@@ -347,7 +347,6 @@ class AssetEntity {
     this.relativePath,
     double? latitude,
     double? longitude,
-    // this.newFilePath,
     this.mimeType,
     this.subtype = 0,
   })  : _latitude = latitude,
